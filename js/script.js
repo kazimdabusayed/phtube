@@ -112,8 +112,8 @@ const handleVideos = async () => {
                         }" alt="">
                     </div>
                     <div class="w-64">
-                        <h2 class="text-lg font-bold">${video.title}</h2>
-                        <div class="flex gap-2 items-center mt-3">
+                        <h2 class="text-xl font-semibold">${video.title}</h2>
+                        <div class="flex gap-2 items-center mt-1">
                         <p class="font-medium">${
                             video.authors[0].profile_name
                         }</p>
