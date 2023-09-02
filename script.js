@@ -20,11 +20,12 @@ const handleLoadVideo = async (categoryId) => {
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
 
+
     id.data.forEach((video) => {
         const div = document.createElement("div");
         div.innerHTML = `
             <!-- Video -->
-            <div class="max-w-[18rem] rounded-lg bg-neutral-400 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+            <div class="max-w-[18rem] rounded-lg bg-neutral-300 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
                 <card class="flex flex-col">
                     <div class="relative overflow-hidden bg-cover bg-no-repeat">
                         <!-- Thumbnail -->
@@ -68,7 +69,6 @@ const handleLoadVideo = async (categoryId) => {
 
         // seconds to days,hours, minutes
         function toDaysMinutesSeconds(totalSeconds) {
-            const seconds = Math.floor(totalSeconds % 60);
             const minutes = Math.floor((totalSeconds % 3600) / 60);
             const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
             const days = Math.floor(totalSeconds / (3600 * 24));
