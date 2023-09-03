@@ -3,15 +3,29 @@ const handleCategory = async() => {
     const data = await response.json();
 
     const menuContainer = document.getElementById("menu-container");
-
     data.data.forEach((category) => {
-        const div = document.createElement("div");
-        div.innerHTML = `
-            <a onclick="changeCategory(${category.category_id})" class="tab bg-[#25252526] rounded-md">${category.category}</a>
-        `;
-        menuContainer.appendChild(div);
+        const button = document.createElement("button");
+        button.setAttribute("id", category.category_id);
+        button.setAttribute(
+            "onclick",
+            `changeCategory(${category.category_id}); currActiveButton(${category.category_id})`
+        );
+        // button.classList = "";
+        button.innerText = category.category;
+        menuContainer.appendChild(button);
     });
 }
+
+const currActiveButton = async (id) => {
+    const catContainer = document.getElementById("menu-container");
+    for (const child of catContainer.children) {
+        console.log(child);
+        child.classList =
+            "bg-[#25252526] text-[#252525B3] px-2 py-1 md:px-5 md:py-2 rounded-md font-inter";
+    }
+    document.getElementById(id).classList =
+        "bg-[red] text-white px-2 py-1 md:px-5 md:py-2 rounded-md font-inter";
+};
 
 // change category function
 const changeCategory = (id) => {
@@ -71,7 +85,6 @@ const handleVideos = async () => {
     const json = await res.json();
     const data = json.data;
     let videos = [...data];
-    console.log(videos);
     if (sortCategory) {
         videos = videos?.sort(
             (a, b) =>
@@ -161,7 +174,7 @@ const handleVideos = async () => {
             "gap-8",
             "mb-8"
         );
-        div.classList = "flex justify-center items-center  w-full my-24 md:my-24";
+        div.classList = "flex justify-center items-center  w-full my-24 md:my-22";
         div.innerHTML = `
             <div class="flex flex-col justify-center items-center text-center">
                 <img src=${"images/Icon.png"} alt="">
@@ -171,6 +184,7 @@ const handleVideos = async () => {
         videoContainer.appendChild(div);
     }
 };
+
 
 // second to hour, minute function
 function convertSecondsToHoursAndMinutes(seconds) {
